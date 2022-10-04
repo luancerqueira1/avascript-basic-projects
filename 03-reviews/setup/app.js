@@ -53,7 +53,6 @@ window.addEventListener('DOMContentLoaded', function () {
   showPerson()
 });
 
-
 function showPerson() {
   const item = reviews[currentItem];
   img.src = item.img;
