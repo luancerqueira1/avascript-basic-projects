@@ -231,7 +231,7 @@ Questions
   margin-bottom: 0;
 }
 /* hide text */
-/* .question-text {
+.question-text {
   display: none;
 }
 .show-text .question-text {
@@ -245,4 +245,18 @@ Questions
 }
 .show-text .plus-icon {
   display: none;
-} */
+}
+
+@keyframes open {
+  0%{
+    /* opacity: 0; */
+    transform: translateY(-1rem);
+    height: auto;
+
+  }
+  100%{
+    /* opacity: 1; */
+    /* transform: translateY(0); */
+    height: fit-content;
+  }
+}
