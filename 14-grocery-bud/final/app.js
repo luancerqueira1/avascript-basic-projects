@@ -28,13 +28,13 @@ function addItem(e) {
   const value = grocery.value;
   const id = new Date().getTime().toString();
 
-  if (value !== "" && !editFlag) {
-    const element = document.createElement("article");
-    let attr = document.createAttribute("data-id");
-    attr.value = id;
-    element.setAttributeNode(attr);
-    element.classList.add("grocery-item");
-    element.innerHTML = `<p class="title">${value}</p>
+  if (value && !editFlag) {
+     const element = document.createElement('article');
+     let attr = document.createAttribute('data-id');
+     attr.value = id;
+     element.setAttributeNode(attr);
+     element.classList.add('grocery-item');
+     element.innerHTML = `<p class="title">${value}</p>
             <div class="btn-container">
               <!-- edit btn -->
               <button type="button" class="edit-btn">
@@ -44,33 +44,35 @@ function addItem(e) {
               <button type="button" class="delete-btn">
                 <i class="fas fa-trash"></i>
               </button>
-            </div>
-          `;
-    // add event listeners to both buttons;
-    const deleteBtn = element.querySelector(".delete-btn");
-    deleteBtn.addEventListener("click", deleteItem);
-    const editBtn = element.querySelector(".edit-btn");
-    editBtn.addEventListener("click", editItem);
+            </div>`;
 
-    // append child
-    list.appendChild(element);
-    // display alert
-    displayAlert("item added to the list", "success");
-    // show container
-    container.classList.add("show-container");
-    // set local storage
-    addToLocalStorage(id, value);
-    // set back to default
-    setBackToDefault();
-  } else if (value !== "" && editFlag) {
-    editElement.innerHTML = value;
-    displayAlert("value changed", "success");
+     // add event listeners to both buttons;
+     const deleteBtn = element.querySelector('.delete-btn');
+     deleteBtn.addEventListener('click', deleteItem);
+     console.log(deleteBtn);
 
-    // edit  local storage
-    editLocalStorage(editID, value);
-    setBackToDefault();
+     const editBtn = element.querySelector('.edit-btn');
+     editBtn.addEventListener('click', editItem);
+
+     // append child
+     list.appendChild(element);
+     // display alert
+     displayAlert('item added to the list', 'success');
+     // show container
+     container.classList.add('show-container');
+     // set local storage
+     addToLocalStorage(id, value);
+     // set back to default
+     setBackToDefault();
+  } else if (value !== '' && editFlag) {
+     editElement.innerHTML = value;
+     displayAlert('value changed', 'success');
+
+     // edit  local storage
+     editLocalStorage(editID, value);
+     setBackToDefault();
   } else {
-    displayAlert("please enter value", "danger");
+     displayAlert('please enter value', 'danger');
   }
 }
 // display alert
